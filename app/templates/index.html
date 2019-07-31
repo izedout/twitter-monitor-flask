@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Twitter Monitor</title>
+    </head>
+    <body>
+        <h1>Hello, brudda</h1>
+		<br />
+		<h2>Start Monitor:</h2>
+		<br />
+		<form action="" method="post" novalidate>
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.webhookurl.label }}<br>
+				{{ form.webhookurl }}
+				{% for error in form.webhookurl.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>
+				{{ form.handles.label }}<br>
+				{{ form.handles }}
+				{% for error in form.handles.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>{{ form.submit() }}</p>
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul>
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+		</form>
+    </body>
+</html>
